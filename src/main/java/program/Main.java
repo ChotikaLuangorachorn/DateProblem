@@ -6,7 +6,7 @@ import java.time.format.DateTimeFormatter;
 import java.util.Scanner;
 
 public class Main {
-
+    public static DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
         System.out.print("insert day: ");
@@ -19,7 +19,6 @@ public class Main {
         String next_date = nextDate(day,mon,year);
         if (!next_date.equals("")){
             System.out.println(next_date);
-            DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
             LocalDate date = LocalDate.parse(next_date, formatter);
             String next_year = nextYear(date);
             System.out.println(next_year);
@@ -30,8 +29,7 @@ public class Main {
 
 
     }
-  private static String nextYear(LocalDate date) {
-        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+    public static String nextYear(LocalDate date) {
         String next_year = date.plusDays(364).format(formatter);
         return next_year;
     }
@@ -41,7 +39,7 @@ public class Main {
         }
         return false;
     }
-     static String nextDate(int day, int mon, int year){ // start date
+    public static String nextDate(int day, int mon, int year){ // start date
         String next_date = "";
         if(mon==12){
             if(day==31){
@@ -78,7 +76,6 @@ public class Main {
         }
         try {
             LocalDate date = LocalDate.of(year,mon,day);
-            DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
             next_date = date.format(formatter);
 
         }catch (DateTimeException e){

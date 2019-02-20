@@ -17,6 +17,8 @@ import java.util.Locale;
 
 public class Date_Input {
     private static final String SAMPLE_CSV_FILE = "./date_input.csv";
+    private static DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+
     public static void main(String[] args) {
         Integer record_id = 1;
         try {
@@ -24,7 +26,7 @@ public class Date_Input {
             CSVPrinter csvPrinter = new CSVPrinter(writer, CSVFormat.DEFAULT.withHeader("id","submit_date","start_date", "end_date"));
 
             String date_str = "2017-01-01"; // first_date_2017
-            DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+
             LocalDate submitDate = LocalDate.parse(date_str, formatter);
             LocalDate startDate;
             LocalDate endDate;
@@ -42,7 +44,6 @@ public class Date_Input {
             }
 
             // ERROR Case
-
 
 
 
