@@ -1,7 +1,7 @@
 import java.sql.*;
 
 public class DB_Connection {
-    private String databaseName = "dateproblem";
+    private String databaseName = "date_problem";
     private String url = "jdbc:mysql://localhost:3306/" + databaseName;
     private String username = "root";
     private String password = "root";
