@@ -63,7 +63,7 @@ public class Main {
         }
         try {
             LocalDate date = LocalDate.of(year,mon,day);
-            DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/YYY");
+            DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
             next_date = date.format(formatter);
             System.out.println(next_date);
 
