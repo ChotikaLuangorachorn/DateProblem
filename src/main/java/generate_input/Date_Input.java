@@ -28,9 +28,10 @@ public class Date_Input {
             LocalDate submitDate = LocalDate.parse(date_str, formatter);
             LocalDate startDate;
             LocalDate endDate;
+
             // Loop add data to CSV
+            // Normal Case
             while (submitDate.getDayOfMonth() <= 31 && submitDate.getMonthValue() <= 12 && submitDate.getYear() <= 2018) {
-                // Normal Case
                 startDate = submitDate.plusDays(1);
                 endDate = startDate.plusYears(1).minusDays(1);
                 csvPrinter.printRecord(id_record, submitDate, startDate, endDate); // ADD RECORD
@@ -39,17 +40,12 @@ public class Date_Input {
                 id_record = id_record + 1;
 
             }
-//            SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yyyy");
-//            Date date = (Date) formatter.parse(date_str);
-//            Calendar calendar = Calendar.getInstance();
+
+            // ERROR Case
 
 
 
-//            calendar.setTime(formatter.parse(date_str));
-//            calendar.add(Calendar.DATE, 1); // add 1 day
-//            date = calendar.getTime();
-//            date_str = formatter.format(calendar.getTime());
-//            System.out.println(date_str);
+
 
             csvPrinter.flush();
         } catch (IOException e) {
