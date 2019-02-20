@@ -6,6 +6,7 @@ import java.time.format.DateTimeFormatter;
 import java.util.Scanner;
 
 public class Main {
+
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
         System.out.print("insert day: ");
@@ -15,16 +16,24 @@ public class Main {
         System.out.print("insert year: ");
         int year = sc.nextInt();
 
-        nextDate(day,mon,year);
+        String next_date = nextDate(day,mon,year);
+        if (!next_date.equals("")){
+            System.out.println(next_date);
+            DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+            LocalDate date = LocalDate.parse(next_date, formatter);
+            String next_year = nextYear(date);
+            System.out.println(next_year);
+        }
+
+
 
 
 
     }
-  private static void nextYear(int day, int mon, int year) {
-        LocalDate date = LocalDate.of(year,mon,day);
-
-        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/YYY");
-        System.out.println(date.plusDays(364).format(formatter));
+  private static String nextYear(LocalDate date) {
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+        String next_year = date.plusDays(364).format(formatter);
+        return next_year;
     }
     public static boolean isLeap(int year){
         if((year % 400 == 0) || ((year % 4 == 0) && (year % 100 != 0))) {
@@ -32,8 +41,8 @@ public class Main {
         }
         return false;
     }
-     static void nextDate(int day, int mon, int year){
-         String next_date = "";
+     static String nextDate(int day, int mon, int year){ // start date
+        String next_date = "";
         if(mon==12){
             if(day==31){
                 day = 1; mon = 1 ; year++;
@@ -71,11 +80,10 @@ public class Main {
             LocalDate date = LocalDate.of(year,mon,day);
             DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
             next_date = date.format(formatter);
-            System.out.println(next_date);
 
         }catch (DateTimeException e){
             System.out.println("invalid input");
         }
-
+        return next_date;
      }
 }
