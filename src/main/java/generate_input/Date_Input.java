@@ -18,7 +18,7 @@ import java.util.Locale;
 public class Date_Input {
     private static final String SAMPLE_CSV_FILE = "./date_input.csv";
     public static void main(String[] args) {
-        Integer id_record = 1;
+        Integer record_id = 1;
         try {
             BufferedWriter writer = Files.newBufferedWriter(Paths.get(SAMPLE_CSV_FILE));
             CSVPrinter csvPrinter = new CSVPrinter(writer, CSVFormat.DEFAULT.withHeader("id","submit_date","start_date", "end_date"));
@@ -34,10 +34,10 @@ public class Date_Input {
             while (submitDate.getDayOfMonth() <= 31 && submitDate.getMonthValue() <= 12 && submitDate.getYear() <= 2018) {
                 startDate = submitDate.plusDays(1);
                 endDate = startDate.plusYears(1).minusDays(1);
-                csvPrinter.printRecord(id_record, submitDate, startDate, endDate); // ADD RECORD
+                csvPrinter.printRecord(record_id, submitDate, startDate, endDate); // ADD RECORD
                 System.out.println(submitDate + " | " + startDate +" | " + endDate);
                 submitDate = submitDate.plusDays(1); //nextDay
-                id_record = id_record + 1;
+                record_id = record_id + 1;
 
             }
 
