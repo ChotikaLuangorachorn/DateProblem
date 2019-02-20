@@ -20,6 +20,12 @@ public class Main {
 
 
     }
+  private static void nextYear(int day, int mon, int year) {
+        LocalDate date = LocalDate.of(year,mon,day);
+
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/YYY");
+        System.out.println(date.plusDays(364).format(formatter));
+    }
     public static boolean isLeap(int year){
         if((year % 400 == 0) || ((year % 4 == 0) && (year % 100 != 0))) {
             return true;
