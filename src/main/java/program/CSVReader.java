@@ -15,11 +15,10 @@ public class CSVReader {
     // = "./date_input.csv"
     private String file_name;
     public CSVReader(String file_name){
-        file_name = file_name;
+        this.file_name = file_name;
     }
     public List<Integer[]> getSubmitDates() {
         List<Integer[]> submitDates = new ArrayList<>();
-
         try {
             // Get data from CSV.
             Reader reader = Files.newBufferedReader(Paths.get(file_name));
