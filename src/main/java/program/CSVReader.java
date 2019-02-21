@@ -12,14 +12,17 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class CSVReader {
-    private static final String SAMPLE_CSV_FILE = "./date_input.csv";
-
+    // = "./date_input.csv"
+    private String file_name;
+    public CSVReader(String file_name){
+        file_name = file_name;
+    }
     public List<Integer[]> getSubmitDates() {
         List<Integer[]> submitDates = new ArrayList<>();
 
         try {
             // Get data from CSV.
-            Reader reader = Files.newBufferedReader(Paths.get(SAMPLE_CSV_FILE));
+            Reader reader = Files.newBufferedReader(Paths.get(file_name));
             CSVParser csvParser = new CSVParser(reader, CSVFormat.DEFAULT
                     .withFirstRecordAsHeader()
                     .withIgnoreHeaderCase()
