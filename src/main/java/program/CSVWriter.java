@@ -15,9 +15,9 @@ public class CSVWriter {
 
     public CSVWriter(String file_name){
         this.file_name = file_name;
-        this.print_to_csv();
+        this.get_csvPrinter();
     }
-    public CSVPrinter print_to_csv(){
+    public CSVPrinter get_csvPrinter(){
         try {
             writer = Files.newBufferedWriter(Paths.get(file_name));
             csvPrinter = new CSVPrinter(writer, CSVFormat.DEFAULT.withHeader("id","submit_date","start_date", "end_date"));

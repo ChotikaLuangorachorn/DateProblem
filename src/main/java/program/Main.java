@@ -17,7 +17,7 @@ public class Main {
     public static void main(String[] args) {
         CSVReader csvReader = new CSVReader(input_file_name);
         CSVWriter csvWriter = new CSVWriter(output_file_name);
-        CSVPrinter csvPrinter = csvWriter.print_to_csv();
+        CSVPrinter csvPrinter = csvWriter.get_csvPrinter();
 
         // Loop input to call nextDate & nextYear func
         List<Integer[]> submit_dates = csvReader.getSubmitDates();
@@ -69,7 +69,7 @@ public class Main {
         }
         return false;
     }
-    
+
     public static String nextDate(int day, int mon, int year){ // start date
         int origin_day = day;
         int origin_mon = mon;
