@@ -19,6 +19,7 @@ public class Main {
         CSVWriter csvWriter = new CSVWriter(output_file_name);
         CSVPrinter csvPrinter = csvWriter.print_to_csv();
 
+        // Loop input to call nextDate & nextYear func
         List<Integer[]> submit_dates = csvReader.getSubmitDates();
         int record_id = 1;
         for (Integer[] submit_date_int : submit_dates) {
@@ -47,7 +48,7 @@ public class Main {
         } catch (IOException e) {
             e.printStackTrace();
         }
-
+//  Ver 1 : input via console
 //        Scanner sc = new Scanner(System.in);
 //        System.out.print("insert day: ");
 //        int day = sc.nextInt();
@@ -56,23 +57,19 @@ public class Main {
 //        System.out.print("insert year: ");
 //        int year = sc.nextInt();
 
-
-
-
-
-
-
     }
     public static String nextYear(LocalDate date) {
         String next_year = date.plusDays(364).format(formatter);
         return next_year;
     }
+
     public static boolean isLeap(int year){
         if((year % 400 == 0) || ((year % 4 == 0) && (year % 100 != 0))) {
             return true;
         }
         return false;
     }
+    
     public static String nextDate(int day, int mon, int year){ // start date
         int origin_day = day;
         int origin_mon = mon;
