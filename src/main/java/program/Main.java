@@ -1,8 +1,10 @@
 package program;
 
+import db_controller.DB_Connection;
 import org.apache.commons.csv.CSVPrinter;
 
 import java.io.IOException;
+import java.sql.SQLException;
 import java.time.DateTimeException;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
@@ -13,8 +15,14 @@ public class Main {
     public static DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
     public static String input_file_name = "./date_input.csv";
     public static String output_file_name = "./date_output.csv";
+//    public static DB_Connection db_connection;
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws SQLException, ClassNotFoundException {
+
+//        db_connection = new DB_Connection("date_problem");
+//        db_connection.setTable_name("date_output")
+//          db_connection.truncate();
+
         CSVReader csvReader = new CSVReader(input_file_name);
         CSVWriter csvWriter = new CSVWriter(output_file_name);
         CSVPrinter csvPrinter = csvWriter.get_csvPrinter();
@@ -26,21 +34,25 @@ public class Main {
             int day = submit_date_int[2];
             int mon = submit_date_int[1];
             int year = submit_date_int[0];
-            String submit_date = LocalDate.of(year,mon,day).format(formatter);
+            String submit_date = String.format("%04d-%02d-%02d",year,mon,day);
             String start_date = nextDate(day,mon,year);
             String end_date;
-            if (start_date.equals("invalidate format")) {
-                end_date = "invalidate format";
-            }else if (start_date.equals("date before 2017")){
-                end_date = "date before 2017";
-            }else if (start_date.equals("date after 2018")){
-                end_date = "date after 2018";
+            if (start_date.equals("Invalid date format")) {
+                end_date = "Invalid date format";
+            }else if (start_date.equals("Date before 2017")){
+                end_date = "Date before 2017";
+            }else if (start_date.equals("Date after 2018")){
+                end_date = "Date after 2018";
             }else{
                 LocalDate date = LocalDate.parse(start_date, formatter);
                 end_date = nextYear(date);
             }
             csvWriter.printRecord(record_id, submit_date, start_date, end_date);
-            System.out.println("id: " + record_id + " | " + submit_date+" | "+ start_date +" | " + end_date);
+//            insert DB
+//            String[] date_set = {submit_date, start_date, end_date};
+//            db_connection.insert_all(date_set);
+
+            System.out.println("id: " + record_id + " inserting ...");
             record_id = record_id + 1;
         }
         try {
@@ -74,7 +86,7 @@ public class Main {
         int origin_day = day;
         int origin_mon = mon;
         int origin_year = year;
-        String next_date = "invalidate format";
+        String next_date = "Invalid date format";
         if(mon==12){
             if(day==31){
                 day = 1; mon = 1 ; year++;
@@ -113,9 +125,9 @@ public class Main {
             LocalDate date = LocalDate.of(year,mon,day);
             next_date = date.format(formatter);
             if (origin_year < 2017){
-                next_date = "date before 2017";
+                next_date = "Date before 2017";
             }else if (origin_year > 2018){
-                next_date = "date after 2018";
+                next_date = "Date after 2018";
             }
 
         }catch (DateTimeException e){
