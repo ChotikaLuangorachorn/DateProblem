@@ -18,8 +18,10 @@ public class Main {
 //    public static DB_Connection db_connection;
 
     public static void main(String[] args) throws SQLException, ClassNotFoundException {
+
 //        db_connection = new DB_Connection("date_problem");
-//        db_connection.setTable_name("date_output");
+//        db_connection.setTable_name("date_output")
+//          db_connection.truncate();
 
         CSVReader csvReader = new CSVReader(input_file_name);
         CSVWriter csvWriter = new CSVWriter(output_file_name);
@@ -37,9 +39,9 @@ public class Main {
             String end_date;
             if (start_date.equals("Invalid date format")) {
                 end_date = "Invalid date format";
-            }else if (start_date.equals("date before 2017")){
+            }else if (start_date.equals("Date before 2017")){
                 end_date = "Date before 2017";
-            }else if (start_date.equals("date after 2018")){
+            }else if (start_date.equals("Date after 2018")){
                 end_date = "Date after 2018";
             }else{
                 LocalDate date = LocalDate.parse(start_date, formatter);
@@ -48,10 +50,9 @@ public class Main {
             csvWriter.printRecord(record_id, submit_date, start_date, end_date);
 //            insert DB
 //            String[] date_set = {submit_date, start_date, end_date};
-//            db_connection.truncate();
 //            db_connection.insert_all(date_set);
 
-            System.out.println("id: " + record_id + "inserting ...");
+            System.out.println("id: " + record_id + " inserting ...");
             record_id = record_id + 1;
         }
         try {

@@ -15,6 +15,7 @@ public class Test_DB {
     public static String end_date;
     public static DB_Connection db_connection;
     public static void main(String[] args) throws SQLException, ClassNotFoundException {
+        int record_id = 1;
         CSVReader date_input_reader = new CSVReader(input_file_name);
         CSVParser input_csvParser = date_input_reader.get_csvParser();
 
@@ -23,6 +24,7 @@ public class Test_DB {
 
         db_connection = new DB_Connection("date_problem");
         db_connection.setTable_name("date_input");
+        db_connection.truncate();
 
         for (CSVRecord csvRecord : input_csvParser) {
             submit_date = csvRecord.get("submit_date");
@@ -30,14 +32,13 @@ public class Test_DB {
             end_date = csvRecord.get("end_date");
             String[] date_set = {submit_date, start_date, end_date};
 //            System.out.println(submit_date+" "+ start_date +" "+ end_date);
-            db_connection.truncate();
+
             db_connection.insert_all(date_set);
-            System.out.println("inserting ... ");
+            System.out.println("id: " + record_id + " inserting ... ");
+            record_id = record_id + 1;
         }
-
-
-
-
-
     }
 }
+
+
+// https://codebeautify.org/csv-to-sql-converter
