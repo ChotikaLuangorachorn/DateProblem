@@ -61,7 +61,6 @@ public class Date_Compare {
             }
 
             indA11++;
-            System.out.println(al1.get(indA11));
 
         }
 
