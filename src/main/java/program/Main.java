@@ -34,7 +34,7 @@ public class Main {
             int day = submit_date_int[2];
             int mon = submit_date_int[1];
             int year = submit_date_int[0];
-            String submit_date = LocalDate.of(year,mon,day).format(formatter);
+            String submit_date = String.format("%04d-%02d-%02d",year,mon,day);
             String start_date = nextDate(day,mon,year);
             String end_date;
             if (start_date.equals("Invalid date format")) {
