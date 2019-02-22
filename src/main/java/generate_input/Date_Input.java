@@ -74,10 +74,10 @@ public class Date_Input {
 
             for (LocalDate date: listDateError) {
                 if (date.getYear()<2017){
-                    csvPrinter.printRecord(record_id, submitDate, "Date before 2017", "Date before 2017"); // ADD RECORD
+                    csvPrinter.printRecord(record_id, date, "Date before 2017", "Date before 2017"); // ADD RECORD
 
                 }else if (date.getYear()>2018){
-                    csvPrinter.printRecord(record_id, submitDate, "Date after 2018", "Date after 2018"); // ADD RECORD
+                    csvPrinter.printRecord(record_id, date, "Date after 2018", "Date after 2018"); // ADD RECORD
                 }
                 record_id++;
             }
@@ -96,33 +96,35 @@ public class Date_Input {
             for (String invalid: invalids) {
                 array_split_invalid.add(invalid.split("-"));
             }
+
             for (int i = 0; i < array_split_invalid.size(); i++) {
                 // day more than 31
                 if( Integer.parseInt(array_split_invalid.get(i)[2]) > 31 ){
                     csvPrinter.printRecord(record_id, invalids[i], "Invalid date format", "Invalid date format"); // ADD RECORD
                 }
                 // month 00 or mora than 12
-                else if ( array_split_invalid.get(i)[1] == "00" || Integer.parseInt(array_split_invalid.get(i)[1]) > 12){
+                else if ( array_split_invalid.get(i)[1].equals("00") || Integer.parseInt(array_split_invalid.get(i)[1]) > 12){
                     csvPrinter.printRecord(record_id, invalids[i], "Invalid date format", "Invalid date format"); // ADD RECORD
                 }
                 //month 2
-                else if ( array_split_invalid.get(i)[1] == "02"){
+                else if ( array_split_invalid.get(i)[1].equals("02")){
                     if ( Integer.parseInt(array_split_invalid.get(i)[0])/4 == 0 || Integer.parseInt(array_split_invalid.get(i)[0])/400 == 0
                             && Integer.parseInt(array_split_invalid.get(i)[2]) > 29 ){
                         csvPrinter.printRecord(record_id, invalids[i], "Invalid date format", "Invalid date format"); // ADD RECORD
 
-                    }else if ( Integer.parseInt(array_split_invalid.get(i)[0])/4 == 0 || Integer.parseInt(array_split_invalid.get(i)[0])/400 == 0
+                    }else if ( Integer.parseInt(array_split_invalid.get(i)[0])/4 != 0 || Integer.parseInt(array_split_invalid.get(i)[0])/400 != 0
                             && Integer.parseInt(array_split_invalid.get(i)[2]) > 28 ){
                         csvPrinter.printRecord(record_id, invalids[i], "Invalid date format", "Invalid date format"); // ADD RECORD
-
                     }
                 }
                 //month yon
-                else if ( (array_split_invalid.get(i)[1] == "04" || array_split_invalid.get(i)[1] == "06" ||
-                          array_split_invalid.get(i)[1] == "09" || array_split_invalid.get(i)[1] == "11")
+                else if ( (array_split_invalid.get(i)[1].equals("04") || array_split_invalid.get(i)[1].equals("06") ||
+                          array_split_invalid.get(i)[1].equals("09") || array_split_invalid.get(i)[1].equals("11"))
                         && Integer.parseInt(array_split_invalid.get(i)[2]) > 30) {
                     csvPrinter.printRecord(record_id, invalids[i], "Invalid date format", "Invalid date format"); // ADD RECORD
 
+                }else{
+                    record_id--;
                 }record_id++;
             }
 
