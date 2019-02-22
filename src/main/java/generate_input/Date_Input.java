@@ -74,10 +74,10 @@ public class Date_Input {
 
             for (LocalDate date: listDateError) {
                 if (date.getYear()<2017){
-                    csvPrinter.printRecord(record_id, submitDate, "Date before 2017", "Date before 2017"); // ADD RECORD
+                    csvPrinter.printRecord(record_id, date, "Date before 2017", "Date before 2017"); // ADD RECORD
 
                 }else if (date.getYear()>2018){
-                    csvPrinter.printRecord(record_id, submitDate, "Date after 2018", "Date after 2018"); // ADD RECORD
+                    csvPrinter.printRecord(record_id, date, "Date after 2018", "Date after 2018"); // ADD RECORD
                 }
                 record_id++;
             }
@@ -123,6 +123,8 @@ public class Date_Input {
                         && Integer.parseInt(array_split_invalid.get(i)[2]) > 30) {
                     csvPrinter.printRecord(record_id, invalids[i], "Invalid date format", "Invalid date format"); // ADD RECORD
 
+                }else{
+                    record_id--;
                 }record_id++;
             }
 
