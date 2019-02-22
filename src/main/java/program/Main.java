@@ -46,6 +46,7 @@ public class Main {
                 end_date = nextYear(date);
             }
             csvWriter.printRecord(record_id, submit_date, start_date, end_date);
+//            insert DB
 //            String[] date_set = {submit_date, start_date, end_date};
 //            db_connection.truncate();
 //            db_connection.insert_all(date_set);
