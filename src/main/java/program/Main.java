@@ -1,8 +1,10 @@
 package program;
 
+import db_controller.DB_Connection;
 import org.apache.commons.csv.CSVPrinter;
 
 import java.io.IOException;
+import java.sql.SQLException;
 import java.time.DateTimeException;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
@@ -13,8 +15,12 @@ public class Main {
     public static DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
     public static String input_file_name = "./date_input.csv";
     public static String output_file_name = "./date_output.csv";
+//    public static DB_Connection db_connection;
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws SQLException, ClassNotFoundException {
+//        db_connection = new DB_Connection("date_problem");
+//        db_connection.setTable_name("date_output");
+
         CSVReader csvReader = new CSVReader(input_file_name);
         CSVWriter csvWriter = new CSVWriter(output_file_name);
         CSVPrinter csvPrinter = csvWriter.get_csvPrinter();
@@ -40,7 +46,11 @@ public class Main {
                 end_date = nextYear(date);
             }
             csvWriter.printRecord(record_id, submit_date, start_date, end_date);
-            System.out.println("id: " + record_id + " | " + submit_date+" | "+ start_date +" | " + end_date);
+//            String[] date_set = {submit_date, start_date, end_date};
+//            db_connection.truncate();
+//            db_connection.insert_all(date_set);
+
+            System.out.println("id: " + record_id + "inserting ...");
             record_id = record_id + 1;
         }
         try {
