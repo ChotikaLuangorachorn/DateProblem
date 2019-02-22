@@ -2,8 +2,10 @@ package program;
 
 import db_controller.DB_Connection;
 import org.apache.commons.csv.CSVPrinter;
+import org.apache.commons.csv.CSVRecord;
 
 import java.io.IOException;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.time.DateTimeException;
 import java.time.LocalDate;
@@ -11,17 +13,29 @@ import java.time.format.DateTimeFormatter;
 import java.util.List;
 import java.util.Scanner;
 
+import static db_controller.Test_DB.db_connection;
+
 public class Main {
     public static DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
     public static String input_file_name = "./date_input.csv";
     public static String output_file_name = "./date_output.csv";
 //    public static DB_Connection db_connection;
+    public static ResultSet resultSet;
 
     public static void main(String[] args) throws SQLException, ClassNotFoundException {
 
+        // FOR CONNECT DB / SELECT DATE_INPUT FORM DB
 //        db_connection = new DB_Connection("date_problem");
-//        db_connection.setTable_name("date_output")
-//          db_connection.truncate();
+//        db_connection.setTable_name("date_input");
+//        resultSet = db_connection.select_all();
+//        db_connection.setTable_name("date_output");
+//        db_connection.truncate();
+//        while (resultSet.next()){
+//            String[] submit_date = resultSet.getString("submit_date").split("-");
+//            int day = Integer.parseInt(submit_date[2]);
+//            int mon = Integer.parseInt(submit_date[1]);
+//            int year = Integer.parseInt(submit_date[0]);
+//        }
 
         CSVReader csvReader = new CSVReader(input_file_name);
         CSVWriter csvWriter = new CSVWriter(output_file_name);
