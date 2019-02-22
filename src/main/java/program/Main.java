@@ -29,12 +29,12 @@ public class Main {
             String submit_date = LocalDate.of(year,mon,day).format(formatter);
             String start_date = nextDate(day,mon,year);
             String end_date;
-            if (start_date.equals("invalidate format")) {
-                end_date = "invalidate format";
+            if (start_date.equals("Invalid date format")) {
+                end_date = "Invalid date format";
             }else if (start_date.equals("date before 2017")){
-                end_date = "date before 2017";
+                end_date = "Date before 2017";
             }else if (start_date.equals("date after 2018")){
-                end_date = "date after 2018";
+                end_date = "Date after 2018";
             }else{
                 LocalDate date = LocalDate.parse(start_date, formatter);
                 end_date = nextYear(date);
@@ -74,7 +74,7 @@ public class Main {
         int origin_day = day;
         int origin_mon = mon;
         int origin_year = year;
-        String next_date = "invalidate format";
+        String next_date = "Invalid date format";
         if(mon==12){
             if(day==31){
                 day = 1; mon = 1 ; year++;
@@ -113,9 +113,9 @@ public class Main {
             LocalDate date = LocalDate.of(year,mon,day);
             next_date = date.format(formatter);
             if (origin_year < 2017){
-                next_date = "date before 2017";
+                next_date = "Date before 2017";
             }else if (origin_year > 2018){
-                next_date = "date after 2018";
+                next_date = "Date after 2018";
             }
 
         }catch (DateTimeException e){
