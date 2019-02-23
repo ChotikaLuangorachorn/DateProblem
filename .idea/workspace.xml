@@ -3,10 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="54a2434a-6e2b-45fa-aaa9-452f532aca69" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/date_compare.csv" beforeDir="false" afterPath="$PROJECT_DIR$/date_compare.csv" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/db_controller/DBConnection.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/db_controller/DBConnection.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/test/CSVWriter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/test/CSVWriter.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/test/DateCompare.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/test/DateCompare.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/test/CSVWriter.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/test/CSVWriter.class" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/target/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -20,7 +17,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/test/DateCompare.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="234">
+            <state relative-caret-position="829">
               <caret line="55" column="88" selection-start-line="55" selection-start-column="88" selection-end-line="55" selection-end-column="88" />
               <folding>
                 <element signature="imports" expanded="true" />
@@ -29,7 +26,7 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/date_compare.csv">
           <provider selected="true" editor-type-id="csv-text-editor">
             <state relative-caret-position="136">
@@ -67,11 +64,11 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/java/test/CSVReader.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="71">
-              <caret line="18" selection-start-line="18" selection-end-line="18" />
+            <state relative-caret-position="198">
+              <caret line="23" selection-start-line="23" selection-end-line="23" />
               <folding>
                 <element signature="e#359#360#0" expanded="true" />
                 <element signature="e#400#401#0" expanded="true" />
@@ -227,7 +224,7 @@
     </panes>
   </component>
   <component name="PropertiesComponent">
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1550924634050" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1550925026006" />
     <property name="last_opened_file_path" value="C:/Program Files (x86)/MySQL/Connector J 8.0/mysql-connector-java-8.0.15.jar!/" />
     <property name="project.structure.last.edited" value="Global Libraries" />
     <property name="project.structure.proportion" value="0.0" />
@@ -360,7 +357,14 @@
       <option name="project" value="LOCAL" />
       <updated>1550923176614</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="edit col name">
+      <created>1550924663034</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1550924663034</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -375,12 +379,12 @@
       <window_info active="true" content_ui="combo" id="Project" order="5" visible="true" weight="0.2526475" />
       <window_info id="Structure" order="6" side_tool="true" weight="0.25" />
       <window_info anchor="bottom" id="Terminal" order="0" weight="0.3295082" />
-      <window_info anchor="bottom" id="Event Log" order="1" sideWeight="0.2647504" side_tool="true" visible="true" weight="0.299509" />
+      <window_info anchor="bottom" id="Event Log" order="1" sideWeight="0.2647504" side_tool="true" visible="true" weight="0.18003273" />
       <window_info anchor="bottom" id="Messages" order="2" sideWeight="0.49394855" weight="0.21276596" />
       <window_info anchor="bottom" id="Version Control" order="3" />
       <window_info anchor="bottom" id="Message" order="4" />
       <window_info anchor="bottom" id="Find" order="5" sideWeight="0.49924356" weight="0.31914893" />
-      <window_info anchor="bottom" id="Run" order="6" sideWeight="0.73524964" visible="true" weight="0.299509" />
+      <window_info anchor="bottom" id="Run" order="6" sideWeight="0.73524964" visible="true" weight="0.18003273" />
       <window_info anchor="bottom" id="Debug" order="7" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="8" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="9" weight="0.4" />
@@ -428,7 +432,8 @@
     <MESSAGE value="variable: snake case to camel case" />
     <MESSAGE value="change csv to db" />
     <MESSAGE value="sql script" />
-    <option name="LAST_COMMIT_MESSAGE" value="sql script" />
+    <MESSAGE value="edit col name" />
+    <option name="LAST_COMMIT_MESSAGE" value="edit col name" />
   </component>
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/src/main/java/test/FileUtils.java" />
@@ -501,17 +506,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/test/CSVReader.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="71">
-          <caret line="18" selection-start-line="18" selection-end-line="18" />
-          <folding>
-            <element signature="e#359#360#0" expanded="true" />
-            <element signature="e#400#401#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/date_problem.sql">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
@@ -537,27 +531,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/test/CSVWriter.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="306">
-          <caret line="38" column="33" lean-forward="true" selection-start-line="38" selection-start-column="33" selection-end-line="38" selection-end-column="33" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/db_controller/DBConnection.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="211">
           <caret line="63" column="51" selection-start-line="63" selection-start-column="51" selection-end-line="63" selection-end-column="51" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/test/DateCompare.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="234">
-          <caret line="55" column="88" selection-start-line="55" selection-start-column="88" selection-end-line="55" selection-end-column="88" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
@@ -572,6 +549,34 @@
       </provider>
       <provider editor-type-id="csv-table-editor">
         <state showInfoPanel="true" fixedHeaders="false" rowLines="3" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/test/DateCompare.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="829">
+          <caret line="55" column="88" selection-start-line="55" selection-start-column="88" selection-end-line="55" selection-end-column="88" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/test/CSVWriter.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="306">
+          <caret line="38" column="33" lean-forward="true" selection-start-line="38" selection-start-column="33" selection-end-line="38" selection-end-column="33" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/test/CSVReader.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="198">
+          <caret line="23" selection-start-line="23" selection-end-line="23" />
+          <folding>
+            <element signature="e#359#360#0" expanded="true" />
+            <element signature="e#400#401#0" expanded="true" />
+          </folding>
+        </state>
       </provider>
     </entry>
   </component>
