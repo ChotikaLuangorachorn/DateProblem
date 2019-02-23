@@ -4,9 +4,8 @@
     <list default="true" id="54a2434a-6e2b-45fa-aaa9-452f532aca69" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/compare.csv" beforeDir="false" afterPath="$PROJECT_DIR$/compare.csv" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/date_input.csv" beforeDir="false" afterPath="$PROJECT_DIR$/date_input.csv" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/date_output.csv" beforeDir="false" afterPath="$PROJECT_DIR$/date_output.csv" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/test/Date_Compare.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/test/Date_Compare.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/test/Date_Compare.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/test/Date_Compare.class" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/target/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -16,12 +15,12 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="FileEditorManager">
-    <leaf>
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/java/test/Date_Compare.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="168">
-              <caret line="57" column="13" lean-forward="true" selection-start-line="57" selection-start-column="13" selection-end-line="57" selection-end-column="13" />
+            <state relative-caret-position="189">
+              <caret line="50" column="38" selection-start-line="50" selection-start-column="38" selection-end-line="50" selection-end-column="38" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -31,37 +30,37 @@
       </file>
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/compare.csv">
+          <provider selected="true" editor-type-id="csv-text-editor">
+            <state relative-caret-position="-10710">
+              <caret line="363" column="6" selection-start-line="363" selection-start-column="6" selection-end-line="363" selection-end-column="6" />
+            </state>
+          </provider>
           <provider editor-type-id="csv-table-editor">
             <state showInfoPanel="true" fixedHeaders="false" rowLines="3" />
-          </provider>
-          <provider selected="true" editor-type-id="csv-text-editor">
-            <state relative-caret-position="6171">
-              <caret line="363" column="6" lean-forward="true" selection-start-line="363" selection-start-column="6" selection-end-line="363" selection-end-column="6" />
-            </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/date_output.csv">
-          <provider editor-type-id="csv-table-editor">
-            <state showInfoPanel="true" fixedHeaders="false" rowLines="3" />
-          </provider>
           <provider selected="true" editor-type-id="csv-text-editor">
-            <state relative-caret-position="335">
+            <state relative-caret-position="17187">
               <caret line="1011" column="37" selection-start-line="1011" selection-start-column="37" selection-end-line="1011" selection-end-column="37" />
             </state>
+          </provider>
+          <provider editor-type-id="csv-table-editor">
+            <state showInfoPanel="true" fixedHeaders="false" rowLines="3" />
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/date_input.csv">
-          <provider editor-type-id="csv-table-editor">
-            <state showInfoPanel="true" fixedHeaders="false" rowLines="3" />
-          </provider>
           <provider selected="true" editor-type-id="csv-text-editor">
-            <state relative-caret-position="340">
+            <state relative-caret-position="17187">
               <caret line="1011" column="37" selection-start-line="1011" selection-start-column="37" selection-end-line="1011" selection-end-column="37" />
             </state>
+          </provider>
+          <provider editor-type-id="csv-table-editor">
+            <state showInfoPanel="true" fixedHeaders="false" rowLines="3" />
           </provider>
         </entry>
       </file>
@@ -81,9 +80,9 @@
     <option name="CHANGED_PATHS">
       <list>
         <option value="$PROJECT_DIR$/src/main/java/test/FileUtils.java" />
-        <option value="$PROJECT_DIR$/src/main/java/test/Date_Compare.java" />
         <option value="$PROJECT_DIR$/date_input.csv" />
         <option value="$PROJECT_DIR$/date_output.csv" />
+        <option value="$PROJECT_DIR$/src/main/java/test/Date_Compare.java" />
       </list>
     </option>
   </component>
@@ -94,7 +93,7 @@
       </MavenImportingSettings>
     </option>
   </component>
-  <component name="ProjectFrameBounds">
+  <component name="ProjectFrameBounds" extendedState="6">
     <option name="x" value="-7" />
     <option name="y" value="2" />
     <option name="width" value="1378" />
@@ -106,6 +105,7 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="Scope" />
       <pane id="PackagesPane" />
       <pane id="ProjectPane">
         <subPane>
@@ -152,11 +152,10 @@
           <select />
         </subPane>
       </pane>
-      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1550855538752" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1550892711370" />
   </component>
   <component name="RunDashboard">
     <option name="ruleStates">
@@ -246,7 +245,7 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-7" y="2" width="1378" height="743" extended-state="0" />
+    <frame x="-8" y="-8" width="1382" height="754" extended-state="6" />
     <editor active="true" />
     <layout>
       <window_info id="Designer" order="0" />
@@ -254,15 +253,15 @@
       <window_info id="Capture Tool" order="2" />
       <window_info id="Favorites" order="3" side_tool="true" />
       <window_info id="Image Layers" order="4" />
-      <window_info content_ui="combo" id="Project" order="5" weight="0.24962063" />
+      <window_info active="true" content_ui="combo" id="Project" order="5" visible="true" weight="0.24886535" />
       <window_info id="Structure" order="6" side_tool="true" weight="0.25" />
-      <window_info active="true" anchor="bottom" id="Terminal" order="0" visible="true" weight="0.3295082" />
+      <window_info anchor="bottom" id="Terminal" order="0" weight="0.3295082" />
       <window_info anchor="bottom" id="Event Log" order="1" side_tool="true" />
       <window_info anchor="bottom" id="Messages" order="2" weight="0.3295082" />
       <window_info anchor="bottom" id="Version Control" order="3" />
       <window_info anchor="bottom" id="Message" order="4" />
       <window_info anchor="bottom" id="Find" order="5" />
-      <window_info anchor="bottom" id="Run" order="6" weight="0.20163934" />
+      <window_info anchor="bottom" id="Run" order="6" visible="true" weight="0.26247987" />
       <window_info anchor="bottom" id="Debug" order="7" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="8" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="9" weight="0.4" />
@@ -351,57 +350,42 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/test/FileUtils.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="51">
-          <caret line="3" column="27" selection-start-line="3" selection-start-column="27" selection-end-line="3" selection-end-column="27" />
+    <entry file="file://$PROJECT_DIR$/src/main/java/test/FileUtils.java" />
+    <entry file="file://$PROJECT_DIR$/p3lang.csv" />
+    <entry file="file://$PROJECT_DIR$/date_output.csv">
+      <provider selected="true" editor-type-id="csv-text-editor">
+        <state relative-caret-position="17187">
+          <caret line="1011" column="37" selection-start-line="1011" selection-start-column="37" selection-end-line="1011" selection-end-column="37" />
         </state>
       </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/p3lang.csv">
       <provider editor-type-id="csv-table-editor">
         <state showInfoPanel="true" fixedHeaders="false" rowLines="3" />
-      </provider>
-      <provider selected="true" editor-type-id="csv-text-editor">
-        <state relative-caret-position="409">
-          <caret line="341" lean-forward="true" selection-start-line="341" selection-end-line="341" />
-        </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/date_input.csv">
-      <provider editor-type-id="csv-table-editor">
-        <state showInfoPanel="true" fixedHeaders="false" rowLines="3" />
-      </provider>
       <provider selected="true" editor-type-id="csv-text-editor">
-        <state relative-caret-position="340">
+        <state relative-caret-position="17187">
           <caret line="1011" column="37" selection-start-line="1011" selection-start-column="37" selection-end-line="1011" selection-end-column="37" />
         </state>
       </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/date_output.csv">
       <provider editor-type-id="csv-table-editor">
         <state showInfoPanel="true" fixedHeaders="false" rowLines="3" />
-      </provider>
-      <provider selected="true" editor-type-id="csv-text-editor">
-        <state relative-caret-position="335">
-          <caret line="1011" column="37" selection-start-line="1011" selection-start-column="37" selection-end-line="1011" selection-end-column="37" />
-        </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/compare.csv">
+      <provider selected="true" editor-type-id="csv-text-editor">
+        <state relative-caret-position="-10710">
+          <caret line="363" column="6" selection-start-line="363" selection-start-column="6" selection-end-line="363" selection-end-column="6" />
+        </state>
+      </provider>
       <provider editor-type-id="csv-table-editor">
         <state showInfoPanel="true" fixedHeaders="false" rowLines="3" />
-      </provider>
-      <provider selected="true" editor-type-id="csv-text-editor">
-        <state relative-caret-position="6171">
-          <caret line="363" column="6" lean-forward="true" selection-start-line="363" selection-start-column="6" selection-end-line="363" selection-end-column="6" />
-        </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/test/Date_Compare.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="168">
-          <caret line="57" column="13" lean-forward="true" selection-start-line="57" selection-start-column="13" selection-end-line="57" selection-end-column="13" />
+        <state relative-caret-position="189">
+          <caret line="50" column="38" selection-start-line="50" selection-start-column="38" selection-end-line="50" selection-end-column="38" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>

@@ -18,69 +18,50 @@ public class Date_Compare {
         CSVReader date_output_reader = new CSVReader(output_file_name);
         CSVParser output_csvParser = date_output_reader.get_csvParser();
 
+        String file3 = "./compare.csv";
+        ArrayList arrayListInput = new ArrayList();
+        ArrayList arrayListOutput = new ArrayList();
 
-//        Compare
-
-        String path = "E:";
-        String file3 = "compare.csv";
-        ArrayList al1 = new ArrayList();
-        ArrayList al2 = new ArrayList();
-
-        BufferedReader CSVFile1 = new BufferedReader(new FileReader(input_file_name));
-        String dataRow1 = CSVFile1.readLine();
-        while (dataRow1 != null) {
-            String[] dataArrayFile1 = dataRow1.split(",",1);
-            for (String item1 : dataArrayFile1) {
-                al1.add(item1);
-            }
-
-            dataRow1 = CSVFile1.readLine(); // Read next line of data.
+        for (CSVRecord input:input_csvParser) {
+//            System.out.println(input.toString());
+            arrayListInput.add(input.toString());
         }
-
-        CSVFile1.close();
-
-        BufferedReader CSVFile2 = new BufferedReader(new FileReader(output_file_name));
-        String dataRow2 = CSVFile2.readLine();
-        while (dataRow2 != null) {
-            String[] dataArray2 = dataRow2.split(",",1);
-            for (String item2 : dataArray2) {
-                al2.add(item2);
-
-            }
-            dataRow2 = CSVFile2.readLine(); // Read next line of data.
+        for (CSVRecord output:output_csvParser){
+            arrayListOutput.add(output.toString());
         }
-        CSVFile2.close();
 
         int indA11 = 0;
-        for (Object bs:al2) {
-            if (al1.get(indA11).equals(bs)){
-                al1.set(indA11,"Accept");
+        for (Object bs:arrayListOutput) {
+            if (arrayListInput.get(indA11).equals(bs)){
+                arrayListInput.set(indA11,"Accept");
             }
             else{
-                al1.set(indA11,"Reject");
+                arrayListInput.set(indA11,"Reject");
             }
-
             indA11++;
-
         }
 
-        int size = al1.size();
-        System.out.println(size);
-
-
+        int size = arrayListInput.size();
+        //Compare
         try {
-            FileWriter writer = new FileWriter(path + file3);
-            while (size != 0) {
-                size--;
-                writer.append("" + al1.get(size));
-                writer.append('\n');
-            }
-            writer.flush();
-            writer.close();
+
+
+                FileWriter writer = new FileWriter(file3);
+                for (int i = 0; i < size; i++) {
+                    if (i==0){
+                        writer.append("id,result"+"\n");
+                        continue;
+                    }
+                    writer.append(i +","+ arrayListInput.get(i));
+                    writer.append('\n');
+                }
+                writer.flush();
+                writer.close();
+
         } catch (IOException e) {
             e.printStackTrace();
         }
-    }
 
+    }
 
 }
