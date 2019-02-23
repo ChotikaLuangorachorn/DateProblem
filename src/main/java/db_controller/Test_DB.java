@@ -1,11 +1,7 @@
 package db_controller;
 
-import org.apache.commons.csv.CSVParser;
-import org.apache.commons.csv.CSVRecord;
-import test.CSVReader;
-
-import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 
 public class Test_DB {
     public static String input_file_name = "./date_input.csv";
@@ -16,27 +12,18 @@ public class Test_DB {
     public static DB_Connection db_connection;
     public static void main(String[] args) throws SQLException, ClassNotFoundException {
         int record_id = 1;
-        CSVReader date_input_reader = new CSVReader(input_file_name);
-        CSVParser input_csvParser = date_input_reader.get_csvParser();
 
-        CSVReader date_output_reader = new CSVReader(output_file_name);
-        CSVParser output_csvParser = date_output_reader.get_csvParser();
 
         db_connection = new DB_Connection("date_problem");
         db_connection.setTable_name("date_input");
         db_connection.truncate();
 
-        for (CSVRecord csvRecord : input_csvParser) {
-            submit_date = csvRecord.get("submit_date");
-            start_date = csvRecord.get("start_date");
-            end_date = csvRecord.get("end_date");
-            String[] date_set = {submit_date, start_date, end_date};
-//            System.out.println(submit_date+" "+ start_date +" "+ end_date);
+//        String[][] date_set = {{"submit_date", "start_date", "end_date"}, {"submit_date", "start_date", "end_date"}};
+        ArrayList<String[]> d = new ArrayList<>();
 
-            db_connection.insert_all(date_set);
-            System.out.println("id: " + record_id + " inserting ... ");
-            record_id = record_id + 1;
-        }
+        System.out.println(d);
+//        db_connection.insert_all(date_set);
+
     }
 }
 

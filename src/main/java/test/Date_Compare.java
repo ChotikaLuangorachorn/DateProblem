@@ -1,6 +1,5 @@
 package test;
 
-import org.apache.commons.csv.CSVFormat;
 import org.apache.commons.csv.CSVParser;
 import org.apache.commons.csv.CSVRecord;
 
@@ -43,24 +42,6 @@ public class Date_Compare {
 
         int size = arrayListInput.size();
         //Compare
-        try {
-
-
-                FileWriter writer = new FileWriter(file3);
-                for (int i = 0; i < size; i++) {
-                    if (i==0){
-                        writer.append("id,result"+"\n");
-                        continue;
-                    }
-                    writer.append(i +","+ arrayListInput.get(i));
-                    writer.append('\n');
-                }
-                writer.flush();
-                writer.close();
-
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
 
     }
 
