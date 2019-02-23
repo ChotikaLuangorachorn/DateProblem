@@ -1,10 +1,7 @@
 package program;
 
-import db_controller.DB_Connection;
-import org.apache.commons.csv.CSVPrinter;
-import org.apache.commons.csv.CSVRecord;
+import db_controller.DBConnection;
 
-import java.io.IOException;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.time.DateTimeException;
@@ -14,52 +11,51 @@ import java.util.ArrayList;
 
 public class Main {
     private static DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
-    private static String input_file_name = "./date_input.csv";
-    private static String output_file_name = "./date_output.csv";
-    private static DB_Connection db_connection;
-    private static ResultSet submit_date_result_set;
-    private static ArrayList<String[]> date_output_list;
+    private static DBConnection dbConnection;
+    private static String dbName = "date_problem";
+    private static ResultSet submitDateResultSet;
+    private static ArrayList<String[]> dateOutputList;
 
     public static void main(String[] args) throws SQLException, ClassNotFoundException {
 
         // FOR CONNECT DB / SELECT DATE_INPUT FORM DB
-        db_connection = new DB_Connection("date_problem");
-        db_connection.setTable_name("date_input");
-        submit_date_result_set = db_connection.select_single_column("submit_date");
-        date_output_list = new ArrayList<>();
-        System.out.println(submit_date_result_set);
+        dbConnection = new DBConnection(dbName);
+        dbConnection.setTableName("date_input");
+        submitDateResultSet = dbConnection.selectSingleColumn("submit_date");
+        dateOutputList = new ArrayList<>();
+        System.out.println(submitDateResultSet);
 
-        while (submit_date_result_set.next()){
-            String[] submit_date_result = submit_date_result_set.getString("submit_date").split("-");
-            int day = Integer.parseInt(submit_date_result[2]);
-            int mon = Integer.parseInt(submit_date_result[1]);
-            int year = Integer.parseInt(submit_date_result[0]);
+        while (submitDateResultSet.next()){
+            String[] submitDateResult = submitDateResultSet.getString("submit_date").split("-");
+            int day = Integer.parseInt(submitDateResult[2]);
+            int mon = Integer.parseInt(submitDateResult[1]);
+            int year = Integer.parseInt(submitDateResult[0]);
 
         // Loop input to call nextDate & nextYear func
-            String submit_date = String.format("%04d-%02d-%02d",year,mon,day);
-            String start_date = nextDate(day,mon,year);
-            String end_date;
-            if (start_date.equals("Invalid date format")) {
-                end_date = "Invalid date format";
-            }else if (start_date.equals("Date before 2017")){
-                end_date = "Date before 2017";
-            }else if (start_date.equals("Date after 2018")){
-                end_date = "Date after 2018";
+            String submitDate = String.format("%04d-%02d-%02d",year,mon,day);
+            String startDate = nextDate(day,mon,year);
+            String endDate;
+            if (startDate.equals("Invalid date format")) {
+                endDate = "Invalid date format";
+            }else if (startDate.equals("Date before 2017")){
+                endDate = "Date before 2017";
+            }else if (startDate.equals("Date after 2018")){
+                endDate = "Date after 2018";
             }else{
-                LocalDate date = LocalDate.parse(start_date, formatter);
-                end_date = nextYear(date);
+                LocalDate date = LocalDate.parse(startDate, formatter);
+                endDate = nextYear(date);
             }
 
 //            insert DB
-            date_output_list.add(new String[]{submit_date, start_date, end_date});
+            dateOutputList.add(new String[]{submitDate, startDate, endDate});
 
             System.out.println( "add to array");
         }
 
-        db_connection.setTable_name("date_output");
-        db_connection.truncate();
-        db_connection.insert_all(date_output_list);
-        db_connection.close_db_connection();
+        dbConnection.setTableName("date_output");
+        dbConnection.truncate();
+        dbConnection.insertAll(dateOutputList);
+        dbConnection.closeDBConnection();
 //  Ver 1 : input via console
 //        Scanner sc = new Scanner(System.in);
 //        System.out.print("insert day: ");
@@ -71,8 +67,8 @@ public class Main {
 
     }
     public static String nextYear(LocalDate date) {
-        String next_year = date.plusDays(364).format(formatter);
-        return next_year;
+        String nextYear = date.plusDays(364).format(formatter);
+        return nextYear;
     }
 
     public static boolean isLeap(int year){
@@ -83,10 +79,10 @@ public class Main {
     }
 
     public static String nextDate(int day, int mon, int year){ // start date
-        int origin_day = day;
-        int origin_mon = mon;
-        int origin_year = year;
-        String next_date = "Invalid date format";
+        int originDay = day;
+        int originMon = mon;
+        int originYear = year;
+        String nextDate = "Invalid date format";
         if(mon==12){
             if(day==31){
                 day = 1; mon = 1 ; year++;
@@ -123,16 +119,16 @@ public class Main {
 
         try {
             LocalDate date = LocalDate.of(year,mon,day);
-            next_date = date.format(formatter);
-            if (origin_year < 2017){
-                next_date = "Date before 2017";
-            }else if (origin_year > 2018){
-                next_date = "Date after 2018";
+            nextDate = date.format(formatter);
+            if (originYear < 2017){
+                nextDate = "Date before 2017";
+            }else if (originYear > 2018){
+                nextDate = "Date after 2018";
             }
 
         }catch (DateTimeException e){
             System.out.println("invalid input > " + year + "-" + mon + "-" + day);
         }
-        return next_date;
+        return nextDate;
      }
 }

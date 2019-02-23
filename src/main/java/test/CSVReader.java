@@ -9,16 +9,17 @@ import java.nio.file.Files;
 import java.nio.file.Paths;
 
 public class CSVReader {
-    private String file_name;
+    private String fileName;
     private Reader reader;
     private CSVParser csvParser;
-    public  CSVReader(String file_name){
-        this.file_name = file_name;
+
+    public  CSVReader(String fileName){
+        this.fileName = fileName;
     }
 
-    public CSVParser get_csvParser(){
+    public CSVParser getCsvParser(){
         try {
-            reader = Files.newBufferedReader(Paths.get(file_name));
+            reader = Files.newBufferedReader(Paths.get(fileName));
             csvParser = new CSVParser(reader, CSVFormat.DEFAULT
                     .withFirstRecordAsHeader()
                     .withIgnoreHeaderCase()

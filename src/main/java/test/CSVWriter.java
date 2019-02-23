@@ -9,17 +9,17 @@ import java.nio.file.Files;
 import java.nio.file.Paths;
 
 public class CSVWriter {
-    private String file_name;
+    private String fileName;
     private BufferedWriter writer;
     private CSVPrinter csvPrinter;
 
-    public CSVWriter(String file_name){
-        this.file_name = file_name;
-        this.get_csvPrinter();
+    public CSVWriter(String fileName){
+        this.fileName = fileName;
+        this.getCsvPrinter();
     }
-    public CSVPrinter get_csvPrinter(){
+    public CSVPrinter getCsvPrinter(){
         try {
-            writer = Files.newBufferedWriter(Paths.get(file_name));
+            writer = Files.newBufferedWriter(Paths.get(fileName));
             csvPrinter = new CSVPrinter(writer, CSVFormat.DEFAULT.withHeader("id",
                                                                             "submit_date",
                                                                             "expect_start_date",
