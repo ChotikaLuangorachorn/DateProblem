@@ -21,8 +21,9 @@ public class CSVWriter {
         try {
             writer = Files.newBufferedWriter(Paths.get(fileName));
             csvPrinter = new CSVPrinter(writer, CSVFormat.DEFAULT.withHeader("id",
-                                                                            "expect_date",
-                                                                            "actual_date",
+                                                                            "submitDate",
+                                                                            "expectStartDate",
+                                                                            "expectEndDate",
                                                                             "result"));
         } catch (IOException e) {
             e.printStackTrace();
@@ -30,9 +31,9 @@ public class CSVWriter {
 
         return csvPrinter;
     }
-    public void printRecord(int recordID, String expectDate, String actualDate, String results){
+    public void printRecord(int recordID, String submitDate,String expectStartDate, String expectEndDate, String result){
         try {
-            csvPrinter.printRecord(recordID, expectDate,  actualDate, results);
+            csvPrinter.printRecord(recordID, submitDate, expectStartDate,  expectEndDate, result);
 
 
         } catch (IOException e) {

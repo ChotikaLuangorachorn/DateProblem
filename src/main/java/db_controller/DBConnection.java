@@ -54,11 +54,14 @@ public class DBConnection {
         this.insertAll("date_output", dateList);
     }
 
-    public void insertDateComparisonTable(ArrayList<String> results) throws SQLException {
-        query = "INSERT INTO date_comparison(result) VALUES(?)";
+    public void insertDateComparisonTable(ArrayList<String[]> results) throws SQLException {
+        query = "INSERT INTO date_comparison(submit_date, expect_start_date, expect_end_date, result) VALUES(?, ?, ?, ?)";
         PreparedStatement preparedStatement = connect.prepareStatement(query, Statement.RETURN_GENERATED_KEYS);
-        for (String result: results){
-            preparedStatement.setString(1, result);
+        for (String[] result: results){
+            preparedStatement.setString(1, result[0]);
+            preparedStatement.setString(2, result[1]);
+            preparedStatement.setString(3, result[2]);
+            preparedStatement.setString(4, result[3]);
             preparedStatement.addBatch();
         }
         preparedStatement.executeBatch();

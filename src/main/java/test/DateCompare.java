@@ -15,7 +15,7 @@ public class DateCompare {
     private static String outputTableName = "date_output";
     private static String comparisonTableName = "date_comparison";
     private static ResultSet dateInputResultSet, dateOutputResultSet;
-    private static ArrayList<String> dateComparisonList;
+    private static ArrayList<String[]> dateComparisonList;
 
     public static void main(String[] args) throws SQLException, ClassNotFoundException {
         CSVWriter csvWriter = new CSVWriter(compare_file_name);
@@ -52,8 +52,8 @@ public class DateCompare {
             }
 
             // Write to CSV file
-            csvWriter.printRecord(recordID, submitDateInput + " | " + startDateInput + " | " + endDateInput, submitDateOutput + " | " + startDateOutput + " | " + endDateOutput, compareResult);
-            dateComparisonList.add(compareResult);
+            csvWriter.printRecord(recordID, submitDateInput, startDateInput, endDateInput, compareResult);
+            dateComparisonList.add(new String[]{submitDateInput, startDateInput, endDateInput, compareResult});
 
             // Count record
             recordID++;
@@ -64,8 +64,8 @@ public class DateCompare {
         dbConnectionOutput.closeDBConnection();
 
         dbConnectionComparison.truncateTable(comparisonTableName);
-        dbConnectionComparison.insertDateComparisonTable(dateComparisonList);
         System.out.println("insert to DB ...");
+        dbConnectionComparison.insertDateComparisonTable(dateComparisonList);
         dbConnectionComparison.closeDBConnection();
 
     }
