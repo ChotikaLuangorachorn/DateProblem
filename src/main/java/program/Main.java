@@ -10,44 +10,32 @@ import java.sql.SQLException;
 import java.time.DateTimeException;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
-import java.util.List;
-import java.util.Scanner;
-
-import static db_controller.Test_DB.db_connection;
+import java.util.ArrayList;
 
 public class Main {
-    public static DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
-    public static String input_file_name = "./date_input.csv";
-    public static String output_file_name = "./date_output.csv";
-//    public static DB_Connection db_connection;
-    public static ResultSet resultSet;
+    private static DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+    private static String input_file_name = "./date_input.csv";
+    private static String output_file_name = "./date_output.csv";
+    private static DB_Connection db_connection;
+    private static ResultSet submit_date_result_set;
+    private static ArrayList<String[]> date_output_list;
 
     public static void main(String[] args) throws SQLException, ClassNotFoundException {
 
         // FOR CONNECT DB / SELECT DATE_INPUT FORM DB
-//        db_connection = new DB_Connection("date_problem");
-//        db_connection.setTable_name("date_input");
-//        resultSet = db_connection.select_all();
-//        db_connection.setTable_name("date_output");
-//        db_connection.truncate();
-//        while (resultSet.next()){
-//            String[] submit_date = resultSet.getString("submit_date").split("-");
-//            int day = Integer.parseInt(submit_date[2]);
-//            int mon = Integer.parseInt(submit_date[1]);
-//            int year = Integer.parseInt(submit_date[0]);
-//        }
+        db_connection = new DB_Connection("date_problem");
+        db_connection.setTable_name("date_input");
+        submit_date_result_set = db_connection.select_single_column("submit_date");
+        date_output_list = new ArrayList<>();
+        System.out.println(submit_date_result_set);
 
-        CSVReader csvReader = new CSVReader(input_file_name);
-        CSVWriter csvWriter = new CSVWriter(output_file_name);
-        CSVPrinter csvPrinter = csvWriter.get_csvPrinter();
+        while (submit_date_result_set.next()){
+            String[] submit_date_result = submit_date_result_set.getString("submit_date").split("-");
+            int day = Integer.parseInt(submit_date_result[2]);
+            int mon = Integer.parseInt(submit_date_result[1]);
+            int year = Integer.parseInt(submit_date_result[0]);
 
         // Loop input to call nextDate & nextYear func
-        List<Integer[]> submit_dates = csvReader.getSubmitDates();
-        int record_id = 1;
-        for (Integer[] submit_date_int : submit_dates) {
-            int day = submit_date_int[2];
-            int mon = submit_date_int[1];
-            int year = submit_date_int[0];
             String submit_date = String.format("%04d-%02d-%02d",year,mon,day);
             String start_date = nextDate(day,mon,year);
             String end_date;
@@ -61,19 +49,17 @@ public class Main {
                 LocalDate date = LocalDate.parse(start_date, formatter);
                 end_date = nextYear(date);
             }
-            csvWriter.printRecord(record_id, submit_date, start_date, end_date);
-//            insert DB
-//            String[] date_set = {submit_date, start_date, end_date};
-//            db_connection.insert_all(date_set);
 
-            System.out.println("id: " + record_id + " inserting ...");
-            record_id = record_id + 1;
+//            insert DB
+            date_output_list.add(new String[]{submit_date, start_date, end_date});
+
+            System.out.println( "add to array");
         }
-        try {
-            csvPrinter.flush();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+
+        db_connection.setTable_name("date_output");
+        db_connection.truncate();
+        db_connection.insert_all(date_output_list);
+        db_connection.close_db_connection();
 //  Ver 1 : input via console
 //        Scanner sc = new Scanner(System.in);
 //        System.out.print("insert day: ");

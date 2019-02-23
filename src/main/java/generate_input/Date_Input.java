@@ -1,19 +1,12 @@
 package generate_input;
 
 import db_controller.DB_Connection;
-import org.apache.commons.csv.CSVFormat;
-import org.apache.commons.csv.CSVPrinter;
-
-import java.io.*;
-
-import java.nio.file.Paths;
 import java.sql.SQLException;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.*;
 
 public class Date_Input {
-    private static final String file_name = "./date_input.csv";
     private static DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
     private static DB_Connection db_connection;
     private static ArrayList<String[]> date_input_list;
@@ -68,18 +61,15 @@ public class Date_Input {
 
         listDateError = getRandomElement(listDateBefore, 113, date_before_2017); //random gen before 2017
         listDateError.addAll(getRandomElement(listDateAfter, 113, date_after_2018)); //random gen after 2018
-        System.out.println(listDateError.size()); // 230 data
+//        System.out.println(listDateError.size()); // 230 data
 
         for (LocalDate date: listDateError) {
             if (date.getYear()<2017){
                 date_input_list.add(new String[]{ date.toString(), "Date before 2017", "Date before 2017"});
-//                csvPrinter.printRecord(record_id, date, "Date before 2017", "Date before 2017"); // ADD RECORD
 
             }else if (date.getYear()>2018){
                 date_input_list.add(new String[]{ date.toString(), "Date after 2018", "Date after 2018"});
-//                csvPrinter.printRecord(record_id, date, "Date after 2018", "Date after 2018"); // ADD RECORD
             }
-//            record_id++;
         }
 
         //Invalid case
@@ -100,43 +90,38 @@ public class Date_Input {
         for (int i = 0; i < array_split_invalid.size(); i++) {
             // day more than 31
             if( Integer.parseInt(array_split_invalid.get(i)[2]) > 31 ){
-                date_input_list.add(new String[]{ invalids[i], "Invalid date format", "Invalid date format"});
-//                csvPrinter.printRecord(record_id, invalids[i], "Invalid date format", "Invalid date format"); // ADD RECORD
+                date_input_list.add(new String[]{ invalids[i], "Invalid date format", "Invalid date format"}); // ADD RECORD
             }
             // month 00 or mora than 12
             else if ( array_split_invalid.get(i)[1].equals("00") || Integer.parseInt(array_split_invalid.get(i)[1]) > 12){
-                date_input_list.add(new String[]{ invalids[i], "Invalid date format", "Invalid date format"});
-//                csvPrinter.printRecord(record_id, invalids[i], "Invalid date format", "Invalid date format"); // ADD RECORD
+                date_input_list.add(new String[]{ invalids[i], "Invalid date format", "Invalid date format"}); // ADD RECORD
             }
             //month 2
             else if ( array_split_invalid.get(i)[1].equals("02")){
                 if ( Integer.parseInt(array_split_invalid.get(i)[0])/4 == 0 || Integer.parseInt(array_split_invalid.get(i)[0])/400 == 0
                         && Integer.parseInt(array_split_invalid.get(i)[2]) > 29 ){
-                    date_input_list.add(new String[]{ invalids[i], "Invalid date format", "Invalid date format"});
-//                    csvPrinter.printRecord(record_id, invalids[i], "Invalid date format", "Invalid date format"); // ADD RECORD
+                    date_input_list.add(new String[]{ invalids[i], "Invalid date format", "Invalid date format"}); // ADD RECORD
 
                 }else if ( Integer.parseInt(array_split_invalid.get(i)[0])/4 != 0 || Integer.parseInt(array_split_invalid.get(i)[0])/400 != 0
                         && Integer.parseInt(array_split_invalid.get(i)[2]) > 28 ){
-                    date_input_list.add(new String[]{ invalids[i], "Invalid date format", "Invalid date format"});
-//                    csvPrinter.printRecord(record_id, invalids[i], "Invalid date format", "Invalid date format"); // ADD RECORD
+                    date_input_list.add(new String[]{ invalids[i], "Invalid date format", "Invalid date format"}); // ADD RECORD
                 }
             }
             //month yon
             else if ( (array_split_invalid.get(i)[1].equals("04") || array_split_invalid.get(i)[1].equals("06") ||
                       array_split_invalid.get(i)[1].equals("09") || array_split_invalid.get(i)[1].equals("11"))
                     && Integer.parseInt(array_split_invalid.get(i)[2]) > 30) {
-                date_input_list.add(new String[]{ invalids[i], "Invalid date format", "Invalid date format"});
-//                csvPrinter.printRecord(record_id, invalids[i], "Invalid date format", "Invalid date format"); // ADD RECORD
+                date_input_list.add(new String[]{ invalids[i], "Invalid date format", "Invalid date format"}); // ADD RECORD
 
             }
         }
-        System.out.println(date_input_list);
+        System.out.println("insert to DB ...");
         db_connection.insert_all(date_input_list);
         db_connection.close_db_connection();
     }
 
     private static List<LocalDate> getRandomElement(List<LocalDate> list, int totalItems, String date) {
-        System.out.println("getRandom");
+        System.out.println("getRandom ...");
         Random rand = new Random();
         // create a temporary list for storing
         // selected element

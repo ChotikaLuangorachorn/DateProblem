@@ -44,6 +44,7 @@ public class DB_Connection {
             preparedStatement.addBatch();
         }
         preparedStatement.executeBatch();
+        System.out.println("insert finished");
     }
 
     public void close_db_connection() throws SQLException {
