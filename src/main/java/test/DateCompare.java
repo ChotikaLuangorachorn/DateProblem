@@ -9,58 +9,64 @@ import java.util.ArrayList;
 
 public class DateCompare {
     public static String compare_file_name = "./date_compare.csv";
-    private static DBConnection dbConnection;
+    private static DBConnection dbConnectionInput, dbConnectionOutput, dbConnectionComparison;
     private static String dbName = "date_problem";
-    private static ResultSet dateInputResultSet;
-    private static ResultSet dateOutputResultSet;
+    private static String inputTableName = "date_input";
+    private static String outputTableName = "date_output";
+    private static String comparisonTableName = "date_comparison";
+    private static ResultSet dateInputResultSet, dateOutputResultSet;
+    private static ArrayList<String> dateComparisonList;
 
     public static void main(String[] args) throws SQLException, ClassNotFoundException {
-        dbConnection = new DBConnection(dbName);
+        CSVWriter csvWriter = new CSVWriter(compare_file_name);
+        int recordID = 1;
 
-        // date_input table
-        dbConnection.setTableName("date_input");
-        dateInputResultSet = dbConnection.selectAll();
-        ArrayList arrayListInput = new ArrayList();
-        while (dateInputResultSet.next()){
-            arrayListInput.add(dateInputResultSet);
+        // DB for date_input Table
+        dbConnectionInput = new DBConnection(dbName);
+        dateInputResultSet = dbConnectionInput.selectAll(inputTableName);
 
+        // DB for date_output Table
+        dbConnectionOutput = new DBConnection(dbName);
+        dateOutputResultSet = dbConnectionOutput.selectAll(outputTableName);
+
+        // DB for insert comparing date to date_comparison Table
+        dbConnectionComparison = new DBConnection(dbName);
+        dateComparisonList = new ArrayList<>();
+
+        // Loop for compare date_input and date_output Table
+        while (dateInputResultSet.next() && dateOutputResultSet.next()){
+            // Get Date Input
+            String submitDateInput = dateInputResultSet.getString("submit_date");
+            String startDateInput = dateInputResultSet.getString("start_date");
+            String endDateInput = dateInputResultSet.getString("end_date");
+
+            // Get Date Output
+            String submitDateOutput = dateOutputResultSet.getString("submit_date");
+            String startDateOutput = dateOutputResultSet.getString("start_date");
+            String endDateOutput = dateOutputResultSet.getString("end_date");
+
+            // Compare
+            String compareResult = "Reject";
+            if (submitDateInput.equals(submitDateOutput) && startDateInput.equals(startDateOutput) && endDateInput.equals(endDateOutput)){
+                compareResult = "Accept";
+            }
+
+            // Write to CSV file
+            csvWriter.printRecord(recordID, submitDateInput + " | " + startDateInput + " | " + endDateInput, submitDateOutput + " | " + startDateOutput + " | " + endDateOutput, compareResult);
+            dateComparisonList.add(compareResult);
+
+            // Count record
+            recordID++;
         }
 
+        csvWriter.flush();
+        dbConnectionInput.closeDBConnection();
+        dbConnectionOutput.closeDBConnection();
 
-        // date_output table
-        dbConnection.setTableName("date_output");
-        dateOutputResultSet = dbConnection.selectAll();
-        ArrayList arrayListOutput = new ArrayList();
-        while (dateOutputResultSet.next()){
-            arrayListOutput.add(dateOutputResultSet);
-
-        }
-
-
-
-
-
-        //Compare
-//        for (CSVRecord input:input_csvParser) {
-////            System.out.println(input.toString());
-//            arrayListInput.add(input.toString());
-//        }
-//        for (CSVRecord output:output_csvParser){
-//            arrayListOutput.add(output.toString());
-//        }
-//
-//        int indA11 = 0;
-//        for (Object bs:arrayListOutput) {
-//            if (arrayListInput.get(indA11).equals(bs)){
-//                arrayListInput.set(indA11,"Accept");
-//            }
-//            else{
-//                arrayListInput.set(indA11,"Reject");
-//            }
-//            indA11++;
-//        }
-
-
+        dbConnectionComparison.truncateTable(comparisonTableName);
+        dbConnectionComparison.insertDateComparisonTable(dateComparisonList);
+        System.out.println("insert to DB ...");
+        dbConnectionComparison.closeDBConnection();
 
     }
 

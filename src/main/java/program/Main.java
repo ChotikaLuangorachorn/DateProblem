@@ -13,6 +13,8 @@ public class Main {
     private static DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
     private static DBConnection dbConnection;
     private static String dbName = "date_problem";
+    private static String inputTableName = "date_input";
+    private static String outputTableName = "date_output";
     private static ResultSet submitDateResultSet;
     private static ArrayList<String[]> dateOutputList;
 
@@ -20,8 +22,7 @@ public class Main {
 
         // FOR CONNECT DB / SELECT DATE_INPUT FORM DB
         dbConnection = new DBConnection(dbName);
-        dbConnection.setTableName("date_input");
-        submitDateResultSet = dbConnection.selectSingleColumn("submit_date");
+        submitDateResultSet = dbConnection.selectSingleColumn("submit_date", inputTableName);
         dateOutputList = new ArrayList<>();
         System.out.println(submitDateResultSet);
 
@@ -49,12 +50,10 @@ public class Main {
 //            insert DB
             dateOutputList.add(new String[]{submitDate, startDate, endDate});
 
-            System.out.println( "add to array");
         }
-
-        dbConnection.setTableName("date_output");
-        dbConnection.truncate();
-        dbConnection.insertAll(dateOutputList);
+        System.out.println( "insert to DB ...");
+        dbConnection.truncateTable(outputTableName);
+        dbConnection.insertDateOutputTable(dateOutputList);
         dbConnection.closeDBConnection();
 //  Ver 1 : input via console
 //        Scanner sc = new Scanner(System.in);

@@ -21,11 +21,8 @@ public class CSVWriter {
         try {
             writer = Files.newBufferedWriter(Paths.get(fileName));
             csvPrinter = new CSVPrinter(writer, CSVFormat.DEFAULT.withHeader("id",
-                                                                            "submit_date",
-                                                                            "expect_start_date",
-                                                                            "expect_end_date",
-                                                                            "actual_start_date",
-                                                                            "actual_end_date",
+                                                                            "expect_date",
+                                                                            "actual_date",
                                                                             "result"));
         } catch (IOException e) {
             e.printStackTrace();
@@ -33,13 +30,22 @@ public class CSVWriter {
 
         return csvPrinter;
     }
-    public void printRecord(int record_id, String expect_start_date, String expect_end_date,String actual_start_date, String actual_end_date, String result){
+    public void printRecord(int recordID, String expectDate, String actualDate, String results){
         try {
-            csvPrinter.printRecord(record_id, expect_start_date, expect_end_date, actual_start_date, actual_end_date, result);
+            csvPrinter.printRecord(recordID, expectDate,  actualDate, results);
 
 
         } catch (IOException e) {
             e.printStackTrace();
+        }
+    }
+
+    public void flush(){
+        try {
+            csvPrinter.flush();
+        } catch (IOException e) {
+            e.printStackTrace();
+            System.out.println("ERROR csv flush");
         }
     }
 

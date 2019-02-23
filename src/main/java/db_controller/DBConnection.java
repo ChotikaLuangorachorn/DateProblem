@@ -18,23 +18,24 @@ public class DBConnection {
         connect = DriverManager.getConnection( url + dbName, user, password);
         statement  = connect.createStatement();
     }
-    public ResultSet selectAll() throws SQLException {
+    public ResultSet selectAll(String tableName) throws SQLException {
         query = "SELECT * FROM " + tableName;
         resultSet = statement.executeQuery(query);
         return resultSet;
     }
 
-    public ResultSet selectSingleColumn(String columnName) throws SQLException {
+    public ResultSet selectSingleColumn(String columnName,String tableName) throws SQLException {
         query = "SELECT "+ columnName +" FROM " + tableName;
         resultSet = statement.executeQuery(query);
         return resultSet;
     }
 
-    public void truncate() throws SQLException {
+    public void truncateTable(String tableName) throws SQLException {
         statement.executeUpdate("TRUNCATE " + tableName);
+        System.out.println("TRUNCATE " + tableName + " Table");
     }
 
-    public void insertAll(ArrayList<String[]> dateList) throws SQLException {
+    public void insertAll(String tableName, ArrayList<String[]> dateList) throws SQLException {
         query = "INSERT INTO "+ tableName +"(submit_date, start_date, end_date) VALUES(?, ?, ?)";
         PreparedStatement preparedStatement = connect.prepareStatement(query, Statement.RETURN_GENERATED_KEYS);
         for (String[] date: dateList){
@@ -46,13 +47,27 @@ public class DBConnection {
         preparedStatement.executeBatch();
         System.out.println("insert finished");
     }
+    public void insertDateInputTable(ArrayList<String[]> dateList) throws SQLException {
+        this.insertAll("date_input", dateList);
+    }
+    public void insertDateOutputTable(ArrayList<String[]> dateList) throws SQLException {
+        this.insertAll("date_output", dateList);
+    }
+
+    public void insertDateComparisonTable(ArrayList<String> results) throws SQLException {
+        query = "INSERT INTO date_comparison(result) VALUES(?)";
+        PreparedStatement preparedStatement = connect.prepareStatement(query, Statement.RETURN_GENERATED_KEYS);
+        for (String result: results){
+            preparedStatement.setString(1, result);
+            preparedStatement.addBatch();
+        }
+        preparedStatement.executeBatch();
+        System.out.println("insert finished");
+    }
 
     public void closeDBConnection() throws SQLException {
         connect.close();
     }
 
-    public void setTableName(String tableName) {
-        this.tableName = tableName;
-    }
 
 }

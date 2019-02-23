@@ -11,11 +11,11 @@ public class DateInput {
     private static DBConnection dbConnection;
     private static ArrayList<String[]> dateInputList;
     private static String db_name = "date_problem";
+    private static String tableName = "date_input";
 
     public static void main(String[] args) throws SQLException, ClassNotFoundException {
         dbConnection = new DBConnection(db_name);
-        dbConnection.setTableName("date_input");
-        dbConnection.truncate();
+        dbConnection.truncateTable(tableName);
         String dateStr = "2017-01-01"; // first_date_2017
         LocalDate submitDate = LocalDate.parse(dateStr, formatter);
         LocalDate startDate;
@@ -117,7 +117,7 @@ public class DateInput {
             }
         }
         System.out.println("insert to DB ...");
-        dbConnection.insertAll(dateInputList);
+        dbConnection.insertDateInputTable(dateInputList);
         dbConnection.closeDBConnection();
     }
 
