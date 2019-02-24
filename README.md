@@ -1,4 +1,4 @@
-# Setup DB
+# Setup DB and Open DB
 Database Name: date_problem  
 User: root  
 Password: root  
@@ -7,3 +7,6 @@ Password: root
 2. install HeidiSQL <https://www.heidisql.com/download.php>
 3. open date_problem.sql with _HeidiSQL_ then query sql-script
 
+# Connect DB for IntelliJ
+1. Open project  
+2. File > Project Structure > Global Libraries > + (New Grobal Library) > Java > Find and Select _mysql-connector-java-8.0.15.jar_ (C:\Program Files (x86)\MySQL\Connector J 8.0\mysql-connector-java-8.0.15.jar)
