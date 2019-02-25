@@ -14,6 +14,7 @@ public class DateInput {
     private static String tableName = "date_input";
 
     public static void main(String[] args) throws SQLException, ClassNotFoundException {
+        double startTime = System.currentTimeMillis();
         dbConnection = new DBConnection(db_name);
         dbConnection.truncateTable(tableName);
         String dateStr = "2017-01-01"; // first_date_2017
@@ -119,6 +120,11 @@ public class DateInput {
         System.out.println("insert to DB ...");
         dbConnection.insertDateInputTable(dateInputList);
         dbConnection.closeDBConnection();
+
+
+        double finishTime = System.currentTimeMillis();
+
+        System.out.println("Run time : " + (finishTime - startTime)/1000 + " second.");
     }
 
     private static List<LocalDate> getRandomElement(List<LocalDate> list, int totalItems, String date) {

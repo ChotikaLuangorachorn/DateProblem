@@ -15,18 +15,18 @@ public class DBConnection {
 
     public DBConnection(String dbName) throws ClassNotFoundException, SQLException {
         Class.forName("com.mysql.jdbc.Driver");
-        connect = DriverManager.getConnection( url + dbName, user, password);
-        statement  = connect.createStatement();
+        this.connect = DriverManager.getConnection( url + dbName, user, password);
+        this.statement  = connect.createStatement();
     }
     public ResultSet selectAll(String tableName) throws SQLException {
-        query = "SELECT * FROM " + tableName;
-        resultSet = statement.executeQuery(query);
+        this.query = "SELECT * FROM " + tableName;
+        this.resultSet = statement.executeQuery(query);
         return resultSet;
     }
 
     public ResultSet selectSingleColumn(String columnName,String tableName) throws SQLException {
-        query = "SELECT "+ columnName +" FROM " + tableName;
-        resultSet = statement.executeQuery(query);
+        this.query = "SELECT "+ columnName +" FROM " + tableName;
+        this.resultSet = statement.executeQuery(query);
         return resultSet;
     }
 
@@ -36,7 +36,7 @@ public class DBConnection {
     }
 
     public void insertAll(String tableName, ArrayList<String[]> dateList) throws SQLException {
-        query = "INSERT INTO "+ tableName +"(submit_date, start_date, end_date) VALUES(?, ?, ?)";
+        this.query = "INSERT INTO "+ tableName +"(submit_date, start_date, end_date) VALUES(?, ?, ?)";
         PreparedStatement preparedStatement = connect.prepareStatement(query, Statement.RETURN_GENERATED_KEYS);
         for (String[] date: dateList){
             preparedStatement.setString(1, date[0]);
@@ -55,7 +55,7 @@ public class DBConnection {
     }
 
     public void insertDateComparisonTable(ArrayList<String[]> results) throws SQLException {
-        query = "INSERT INTO date_comparison(submit_date, expect_start_date, expect_end_date, result) VALUES(?, ?, ?, ?)";
+        this.query = "INSERT INTO date_comparison(submit_date, expect_start_date, expect_end_date, result) VALUES(?, ?, ?, ?)";
         PreparedStatement preparedStatement = connect.prepareStatement(query, Statement.RETURN_GENERATED_KEYS);
         for (String[] result: results){
             preparedStatement.setString(1, result[0]);
@@ -69,7 +69,7 @@ public class DBConnection {
     }
 
     public void closeDBConnection() throws SQLException {
-        connect.close();
+//        this.connect.close();
     }
 
 

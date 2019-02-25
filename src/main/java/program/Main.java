@@ -20,6 +20,8 @@ public class Main {
 
     public static void main(String[] args) throws SQLException, ClassNotFoundException {
 
+        double startTime = System.currentTimeMillis();
+
         // FOR CONNECT DB / SELECT DATE_INPUT FORM DB
         dbConnection = new DBConnection(dbName);
         submitDateResultSet = dbConnection.selectSingleColumn("submit_date", inputTableName);
@@ -63,6 +65,9 @@ public class Main {
 //        int mon = sc.nextInt();
 //        System.out.print("insert year: ");
 //        int year = sc.nextInt();
+        double finishTime = System.currentTimeMillis();
+
+        System.out.println("Run time : " + (finishTime - startTime)/1000 + " second.");
 
     }
     public static String nextYear(LocalDate date) {

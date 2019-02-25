@@ -18,6 +18,7 @@ public class DateCompare {
     private static ArrayList<String[]> dateComparisonList;
 
     public static void main(String[] args) throws SQLException, ClassNotFoundException {
+        double startTime = System.currentTimeMillis();
         CSVWriter csvWriter = new CSVWriter(compare_file_name);
         int recordID = 1;
 
@@ -67,6 +68,10 @@ public class DateCompare {
         System.out.println("insert to DB ...");
         dbConnectionComparison.insertDateComparisonTable(dateComparisonList);
         dbConnectionComparison.closeDBConnection();
+
+        double finishTime = System.currentTimeMillis();
+
+        System.out.println("Run time : " + (finishTime - startTime)/1000 + " second.");
 
     }
 
