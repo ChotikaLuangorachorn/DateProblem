@@ -26,7 +26,7 @@ CREATE TABLE IF NOT EXISTS `date_comparison` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=1011 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
--- Dumping data for table date_problem.date_comparison: ~0 rows (approximately)
+-- Dumping data for table date_problem.date_comparison: ~1,010 rows (approximately)
 DELETE FROM `date_comparison`;
 /*!40000 ALTER TABLE `date_comparison` DISABLE KEYS */;
 INSERT INTO `date_comparison` (`id`, `submit_date`, `expect_start_date`, `expect_end_date`, `result`) VALUES
@@ -1051,7 +1051,7 @@ CREATE TABLE IF NOT EXISTS `date_input` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=1011 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
--- Dumping data for table date_problem.date_input: ~0 rows (approximately)
+-- Dumping data for table date_problem.date_input: ~1,010 rows (approximately)
 DELETE FROM `date_input`;
 /*!40000 ALTER TABLE `date_input` DISABLE KEYS */;
 INSERT INTO `date_input` (`id`, `submit_date`, `start_date`, `end_date`) VALUES
@@ -2076,7 +2076,7 @@ CREATE TABLE IF NOT EXISTS `date_output` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=1011 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
--- Dumping data for table date_problem.date_output: ~0 rows (approximately)
+-- Dumping data for table date_problem.date_output: ~1,010 rows (approximately)
 DELETE FROM `date_output`;
 /*!40000 ALTER TABLE `date_output` DISABLE KEYS */;
 INSERT INTO `date_output` (`id`, `submit_date`, `start_date`, `end_date`) VALUES
