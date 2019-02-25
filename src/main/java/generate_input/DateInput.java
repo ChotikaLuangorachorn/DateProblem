@@ -123,7 +123,6 @@ public class DateInput {
 
 
         double finishTime = System.currentTimeMillis();
-
         System.out.println("Run time : " + (finishTime - startTime)/1000 + " second.");
     }
 

@@ -66,7 +66,6 @@ public class Main {
 //        System.out.print("insert year: ");
 //        int year = sc.nextInt();
         double finishTime = System.currentTimeMillis();
-
         System.out.println("Run time : " + (finishTime - startTime)/1000 + " second.");
 
     }
